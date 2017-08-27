@@ -1,0 +1,35 @@
+udo wget https://download.sonatype.com/nexus/oss/nexus-2.14.4-03-bundle.tar.gz.   // Downloading Nexus 
+sudo tar xvzf nexus-2.14.4-03-bundle.tar.gz  -C /usr/local  //Extracting and copying files to /usr/local
+cd /usr/local
+sudo ln -s nexus-2.11.3-01/ nexus.  //Creating simulink
+sudo vi /etc/profile
+
+Add these lines:
+
+export NEXUS_PLATFORM=linux-x86_64
+export NEXUS_HOME=/usr/local/nexus-2.14.4-03
+export NEXUS_EXEC=$NEXUS_HOME/usr/local/nexus-2.14.4-03/bin/jsw/$NEXUS_PLATFORM
+export PATH=$NEXUS_EXEC:$PATH
+
+sudo vi $NEXUS_EXEC/nexus
+
+Assign these lines:
+
+APP_NAME=“nexus”
+APP_LONG_NAME=“Sonatype Nexus OSS”
+RUN_AS_USER=root
+PIDDIR=“/var/run”
+
+cp $NEXUS_EXEC/usr/local/nexus-2.14.4-03/bin/nexus /etc/init.d/nexus
+chmod 755 /etc/init.d/nexus
+sudo yum update -y
+
+cd /usr/local/nexus-2.14.4-03
+
+./bin/nexus console
+./bin/nexus start
+
+tail -f logs/wrapper.log
+
+http://ip:8081/nexus
+
