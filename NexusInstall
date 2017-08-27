@@ -1,4 +1,4 @@
-udo wget https://download.sonatype.com/nexus/oss/nexus-2.14.4-03-bundle.tar.gz.   // Downloading Nexus 
+sudo wget https://download.sonatype.com/nexus/oss/nexus-2.14.4-03-bundle.tar.gz.   // Downloading Nexus 
 sudo tar xvzf nexus-2.14.4-03-bundle.tar.gz  -C /usr/local  //Extracting and copying files to /usr/local
 cd /usr/local
 sudo ln -s nexus-2.11.3-01/ nexus.  //Creating simulink
